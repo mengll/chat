@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>响应式 - by developer.cn.com </title>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+</head>
+<body>
+<div data-role="page">
+	<div data-role="header" class="header linear-g">
+        <a href="#panel-left" data-iconpos="notext" class="glyphicon glyphicon-th-large col-xs-2 text-right"> </a>
+        <a class="text-center col-xs-8">个人版微信聊天</a>
+        <a href="#panel-right" data-iconpos="notext" class="glyphicon glyphicon-user col-xs-2 text-left"> </a>
+    </div>
+    <div data-role="panel" data-position="left" data-display="push" class="list-group shortcut_menu dn linear-g" id="panel-left">
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"> </span> &nbsp;haoyou</a>
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"> </span> &nbsp;刘文丹</a>
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"> </span> &nbsp;付强</a>
+        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"> </span> &nbsp;付静</a>
+    </div>
+    <div data-role="panel" data-position="right" data-display="push" class="user_box text-center dn linear-g" id="panel-right">
+        <div class="u_info">
+            <img class="avatar" src="images/avatar.png" alt="头像">
+            <span class="username">developer</span>
+        </div>
+        <ul class="user_menu">
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-cog"> </span> &nbsp;基本设置</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-lock"> </span> &nbsp;修改密码</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-picture"> </span> &nbsp;上传头像</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-off"> </span> &nbsp;安全退出</a></li>
+        </ul>
+    </div>
+    <div data-role="content" class="container" role="main">
+        <ul class="content-reply-box mg10" id="content">
+        	<!--
+             	作者：1633094010@qq.com
+             	时间：2015-08-12
+             	描述：接收别人的信息
+             -->
+      
+        </ul>
+        <ul class=" text-center linear-g">
+			  		<input class="span2" id="sendcontent" type="text">
+			  		<button class="btn" id="sendmessage" type="button">Go!</button>
+        </ul>
+         <ul class=" text-center linear-g">
+			  		<input class="span2" id="username" type="text">
+			  		<input class="span2" id="age" type="text">
+			  		<input class="span2" id="userid" type="text">
+			  		<button class="btn" id="login" type="button">登录!</button>
+        </ul>
+        <ul class="operating row text-center linear-g">
+        	<li class="col-xs-4"><a href="#"><span class="glyphicon glyphicon-tags"></span> &nbsp;标签</a></li>
+        	<li class="col-xs-4"><a href="#"><span class="glyphicon glyphicon-comment"></span> &nbsp;回复</a></li>
+        	<li class="col-xs-4"><a href="#"><span class="glyphicon glyphicon-heart"></span> &nbsp;喜欢</a></li>
+        </ul>
+    </div>
+</div>
+<!--显示弹窗的实现-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--弹窗的结束-->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+<script src="socket.io.js"></script>
+<script src="js/client.js" ></script>
+<script type="text/javascript">
+	$(function(){
+		/*
+		** 不同页面切换转场效果
+		** $.mobile.changePage ('/test.html', 'slide/pop/fade/slideup/slidedown/flip/none', false, false);
+		*/
+		$('.list-group-item,.menu a').click(function(){
+			$.mobile.changePage($(this).attr('href'), {
+				transition : 'flip', //转场效果
+				reverse : true       //默认为false,设置为true时将导致一个反方向的转场
+			});
+		});
+	});
+</script>
+</body>
+</html>
